@@ -1,0 +1,14 @@
+body {font-family:'Special Elite';}
+
+a:link {color:#ff1800;}
+a:visited {color:#ff1800;}
+a:active {color:#ff1800;}
+a:hover {color:#a61000;}
+
+table td, th {padding:10px;vertical-align:top;text-align:left;}
+h1, h2 {margin-bottom:0px;}
+ol {margin-top:5px;}
+li {padding-bottom:10px;}
+.right {text-align:right;}
+.top {vertical-align:top;}
+.rounded {border-radius:15px;}

@@ -1,0 +1,45 @@
+<h1>New Recipe</h1>
+
+<% form_for Recipe.new do |f| %>
+	<table>
+		<tr>
+			<th class="right top">Name</th>
+			<td><%= f.text_field :name %></td>
+		</tr>
+		
+		<tr>
+			<th class="right top">Description</th>
+			<td><%= f.text_area :description %></td>
+		</tr>
+		
+		<tr>
+			<th class="right top">Cuisine</th>
+			<td><%= f.select :cuisine_id, Cuisine.all(:order => 'name asc').collect {|c| [c.name, c.id]}, {:include_blank => true}%></td>
+		</tr>
+		
+		<tr>
+			<th class="right top">Course</th>
+			<td><%= f.select :course_id, Course.all.collect {|c| [c.name, c.id]}, {:include_blank => true}%></td>
+		</tr>
+		
+		<tr>
+			<th class="right top">Prep Time</th>
+			<td><%= f.text_field :preparation_time %></td>
+		</tr>
+		
+		<tr>
+			<th class="right top">Cooking Time</th>
+			<td><%= f.text_field :cooking_time %></td>
+		</tr>
+		
+		<tr>
+			<th class="right top">Serves</th>
+			<td><%= f.text_field :serves %></td>
+		</tr>
+		
+		<tr>
+			<th class="right top"></th>
+			<td><%= submit_tag %> <%= link_to 'cancel', recipes_path %></td>
+		</tr>
+	</table>
+<% end %>

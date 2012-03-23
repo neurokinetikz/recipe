@@ -1,0 +1,25 @@
+<h2>instructions</h2>
+<ol>
+<% @recipe.instructions.each do |i| %>
+	<li class="rounded" style="">
+		<div class="rounded" style="padding:10px;<%= cycle('','background-color:#eee;') %>">
+		<% @instruction = i %>
+		<%= in_place_editor_field :instruction, :description %>
+		<%= link_to_remote(" x ", :url => instruction_path(i), :method => "delete") if params[:action] == 'edit' %>
+		</div>
+	</li>
+<% end %>
+</ol>
+
+<% if params[:action] == 'edit' %>
+<% form_for Instruction.new do |f| %>
+	<tr>
+		<td><%= f.text_area :description, :cols => 60, :rows => 10 %></td>
+		<td>
+			<%= hidden_field_tag 'instruction[recipe_id]', @recipe.id %>
+			<%= submit_tag 'add' %>
+		</td>
+	</tr>
+<% end %>
+<% end %>
+</table>

@@ -1,0 +1,12 @@
+<h1>Ingredients <%= link_to 'new', new_ingredient_path, :style => 'font-size:12px;' %></h1>
+
+<table>
+
+<tr><th>id</th><th>name</th><th>description</th></tr>
+	
+<% Ingredient.all(:order => 'name asc').each do |ingredient| %>
+<% @ingredient = ingredient %>
+<tr><td><%= ingredient.id %></td><td><%= in_place_editor_field :ingredient, 'name' %></td><td><%= ingredient.description %></td></tr>
+<% end %>
+
+</table>

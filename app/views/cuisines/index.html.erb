@@ -1,0 +1,11 @@
+<h1>Cuisines <%= link_to 'new', new_cuisine_path, :style => 'font-size:12px;' %></h1>
+
+<table>
+
+<tr><th>id</th><th>name</th><th>description</th></tr>
+	
+<% Cuisine.all.each do |cuisine| %>
+<tr><td><%= cuisine.id %></td><td><%= cuisine.name %></td><td><%= cuisine.description %></td></tr>
+<% end %>
+
+</table>

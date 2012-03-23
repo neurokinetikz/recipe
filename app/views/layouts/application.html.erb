@@ -1,0 +1,18 @@
+<html>
+<head>
+<%= stylesheet_link_tag :all %>
+<%= javascript_include_tag :all %>
+<link href='http://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<div class="rounded" style="width:1000px;margin:auto;border: 1px dashed #eee; padding:10px;">
+<div class="rounded" style="width:75%;background-color:#eee;padding:5px;">
+<%= link_to 'recipes', recipes_path %>
+| <%= link_to 'cuisines', cuisines_path %>
+| <%= link_to 'courses', courses_path %>
+| <%= link_to 'ingredients', ingredients_path %>
+</div>
+<%= yield %>
+</div>
+</body>
+</html>

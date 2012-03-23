@@ -1,0 +1,27 @@
+<h2>ingredients</h2>
+<ul>
+<% @recipe.item_ingredients.each do |i| %>
+	<li><%= "#{i.quantity} #{i.unit} <b>#{i.ingredient.name}</b> #{i.preparation}" %> <%= link_to_remote(" x ", :url => item_ingredient_path(i), :method => "delete") if params[:action] == 'edit' %></li>
+<% end %>
+</ul>
+
+<% if params[:action] == 'edit'%>
+<table style="width:480px;">
+	<tr><th>qty</th><th>unit</th><th>ingredient</th><th>preparation</th><th></th></tr>
+	
+	
+	<% form_for ItemIngredient.new do |f| %>
+		<tr>
+			<td><%= f.text_field :quantity, :size => 2 %></td>
+			<td><%= f.text_field :unit, :size => 2 %></td>
+			<td><%= f.select :ingredient_id, Ingredient.all(:order => 'name asc').collect {|i| [i.name, i.id]}, {:include_blank => true}%></td>
+			<td><%= f.text_field :preparation, :size => 10 %></td>
+			<td>
+				<%= hidden_field_tag 'item_ingredient[item_type]', 'Recipe' %>
+				<%= hidden_field_tag 'item_ingredient[item_id]', @recipe.id %>
+				<%= submit_tag 'add' %>
+			</td>
+		</tr>
+	<% end %>
+</table>
+<% end %>

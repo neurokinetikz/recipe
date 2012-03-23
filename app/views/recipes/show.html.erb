@@ -1,0 +1,49 @@
+<div style="overflow:auto;">
+
+<% form_for :recipe, @recipe, :url => recipe_path(@recipe), :html => { :method => :put, :multipart => true } do |f| %>
+
+<div >
+	<h1><%=  in_place_editor_field :recipe, :name, {}, :size => 70 %></h1>
+	<div class="rounded" style="float:left;background-color:#eee;width:100%">
+	<div style="float:left;padding:20px;">
+		<%= image_tag @recipe.image.url(:medium), :class => 'rounded' %><br>
+		<% if params[:action] == 'edit' %>
+		<%= f.file_field :image %> <%= submit_tag %>
+		<% end %>
+	</div>
+	
+	<div style="float:left;padding:20px 10px 0px 10px;width:410px;">
+		<b>description</b><br/>
+		<%= in_place_editor_field :recipe, :description, {}, :rows => 8, :cols => 33 %><p/>
+		
+		<b>cuisine</b><br/>
+		<%= @recipe.cuisine.name %><p/>
+		
+		<b>course</b><br/>
+		<%= @recipe.course.name %><p/>
+		
+		<b>prep time</b><br/>
+		<%= in_place_editor_field :recipe, :preparation_time %><p/>
+		
+		<b>cooking time</b><br/>
+		<%= in_place_editor_field :recipe, :cooking_time %><p/>
+		
+		<b>serves</b><br/>
+		<%= in_place_editor_field :recipe, :serves %><p/>
+		
+		
+	</div>
+	</div>
+</div>	
+	
+<% end %>
+
+<div style="clear:both;">
+	<div id="ingredients" style="width:50%;float:left;">
+		<%= render :partial => 'ingredients' %>
+	</div>
+
+	<div id="instructions" style="width:50%;float:left;">
+		<%= render :partial => 'instructions' %>
+	</div>
+</div>

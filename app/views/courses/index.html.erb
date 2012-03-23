@@ -1,0 +1,11 @@
+<h1>Courses <%= link_to 'new', new_course_path, :style => 'font-size:12px;' %></h1>
+
+<table>
+
+<tr><th>id</th><th>name</th><th>description</th><th>order</th></tr>
+	
+<% Course.all.each do |course| %>
+<tr><td><%= course.id %></td><td><%= course.name %></td><td><%= course.description %></td><td><%= course.course_order %></td></tr>
+<% end %>
+
+</table>

@@ -1,0 +1,10 @@
+<div style="overflow:auto;">
+<h1>Recipes <%= link_to 'new', new_recipe_path, :style => 'font-size:12px;' %></h1>
+
+<% Recipe.all.each do |recipe| %>
+	<div class="rounded" style="float:left;width:225px;height:255px;border:0px dotted #999;padding:5px;text-align:center;margin:5px;color:#666;">
+		<%= link_to image_tag(recipe.image.url(:mid), :class => 'rounded'), recipe_path(recipe) %><br/><br/>
+		<%= link_to recipe.name, recipe_path(recipe) %>
+	</div>
+<% end %>
+</div>
